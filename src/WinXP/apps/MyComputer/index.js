@@ -155,14 +155,7 @@ function MyComputer({ onClose }) {
             </div>
             <div className="com__content__left__card">
               <div className="com__content__left__card__header">
-                <div className="com__content__left__card__header__text">
-                  Other Places
-                </div>
-                <img
-                  src={pullup}
-                  alt=""
-                  className="com__content__left__card__header__img"
-                />
+                Other Places
               </div>
               <div className="com__content__left__card__content">
                 <div className="com__content__left__card__row">
@@ -209,14 +202,7 @@ function MyComputer({ onClose }) {
             </div>
             <div className="com__content__left__card">
               <div className="com__content__left__card__header">
-                <div className="com__content__left__card__header__text">
-                  Details
-                </div>
-                <img
-                  src={pullup}
-                  alt=""
-                  className="com__content__left__card__header__img"
-                />
+                Details
               </div>
               <div className="com__content__left__card__content">
                 <div className="com__content__left__card__row">
@@ -335,7 +321,7 @@ function MyComputer({ onClose }) {
             </div>
             <div className="com__content__right__card com__content__right__card--me">
               <div className="com__content__right__card__header">
-                About Me :)
+                Full credits to ShizukuIchi
               </div>
               <div className="com__content__right__card__content">
                 <a

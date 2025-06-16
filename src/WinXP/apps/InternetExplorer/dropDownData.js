@@ -388,6 +388,14 @@ const Favorites = [
     type: 'separator',
   },
   {
+    type: 'item',
+    text: 'jahrei labs - Y2K Edition',
+    symbol: 'ie-paper',
+  },
+  {
+    type: 'separator',
+  },
+  {
     type: 'menu',
     symbol: 'folder',
     position: {

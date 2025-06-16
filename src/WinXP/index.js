@@ -216,10 +216,28 @@ function WinXP() {
     dispatch({ type: FOCUS_ICON, payload: id });
   }
   function onDoubleClickIcon(component) {
-    const appSetting = Object.values(appSettings).find(
-      setting => setting.component === component,
-    );
-    dispatch({ type: ADD_APP, payload: appSetting });
+    if (component === 'CS_FAKE') {
+      // Spam multiple error boxes diagonally
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+          dispatch({ 
+            type: ADD_APP, 
+            payload: {
+              ...appSettings.CS_FAKE,
+              defaultOffset: {
+                x: (window.innerWidth / 2 - 190) + (i * 30),
+                y: (window.innerHeight / 2 - 60) + (i * 30),
+              }
+            }
+          });
+        }, i * 100); // Stagger the appearance with 100ms delay
+      }
+    } else {
+      const appSetting = Object.values(appSettings).find(
+        setting => setting.component === component,
+      );
+      dispatch({ type: ADD_APP, payload: appSetting });
+    }
   }
   function getFocusedAppId() {
     if (state.focusing !== FOCUSING.WINDOW) return -1;

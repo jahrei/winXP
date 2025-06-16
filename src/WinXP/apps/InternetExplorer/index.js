@@ -24,7 +24,7 @@ import dropdown from 'assets/windowsIcons/dropdown.png';
 
 function InternetExplorer({ onClose }) {
   const [state, setState] = useState({
-    route: 'main',
+    route: 'jahreilabs',
     query: '',
   });
   function onSearch(str) {
@@ -41,6 +41,30 @@ function InternetExplorer({ onClose }) {
       query: '',
     });
   }
+  function goJahreiLabs() {
+    setState({
+      route: 'jahreilabs',
+      query: '',
+    });
+  }
+  function goYahooNews() {
+    setState({
+      route: 'yahoonews',
+      query: '',
+    });
+  }
+  function goYahooMail() {
+    setState({
+      route: 'yahoomail',
+      query: '',
+    });
+  }
+  function goYouTube() {
+    setState({
+      route: 'youtube',
+      query: '',
+    });
+  }
   function onClickOptionItem(item) {
     switch (item) {
       case 'Close':
@@ -49,6 +73,9 @@ function InternetExplorer({ onClose }) {
       case 'Home Page':
       case 'Back':
         goMain();
+        break;
+      case 'jahrei labs - Y2K Edition':
+        goJahreiLabs();
         break;
       default:
     }
@@ -132,16 +159,72 @@ function InternetExplorer({ onClose }) {
           <img className="ie__function_bar__icon--margin12" src={msn} alt="" />
         </div>
       </section>
+      
+      {/* Yahoo Toolbar */}
+      <section className="ie__toolbar__yahoo">
+        <div className="ie__toolbar__yahoo__logo">Yahoo! Toolbar</div>
+        <div className="ie__toolbar__yahoo__search">
+          <input placeholder="Yahoo! Search" disabled />
+          <button>Search</button>
+        </div>
+        <div className="ie__toolbar__yahoo__buttons">
+          <button onClick={goYahooMail}>Mail</button>
+          <button onClick={goYahooNews}>News</button>
+          <button onClick={goYouTube}>YouTube</button>
+          <button>Finance</button>
+          <button>Games</button>
+          <button>Shopping</button>
+        </div>
+      </section>
+
+      {/* Ask Jeeves Toolbar */}
+      <section className="ie__toolbar__ask">
+        <div className="ie__toolbar__ask__logo">🎩 Ask Jeeves Toolbar</div>
+        <div className="ie__toolbar__ask__search">
+          <input placeholder="Ask Jeeves anything..." disabled />
+          <button>Ask!</button>
+        </div>
+        <div className="ie__toolbar__ask__buttons">
+          <button>Pictures</button>
+          <button>News</button>
+          <button>Shopping</button>
+          <button>Yellow Pages</button>
+        </div>
+      </section>
+
+      {/* McAfee Toolbar */}
+      <section className="ie__toolbar__mcafee">
+        <div className="ie__toolbar__mcafee__logo">McAfee® SiteAdvisor™</div>
+        <div className="ie__toolbar__mcafee__status">
+          <span className="ie__toolbar__mcafee__light green"></span>
+          <span>Site is SAFE</span>
+        </div>
+        <div className="ie__toolbar__mcafee__buttons">
+          <button>Scan for Viruses</button>
+          <button>Privacy Report</button>
+          <button>Security Center</button>
+        </div>
+      </section>
+
       <section className="ie__address_bar">
         <div className="ie__address_bar__title">Address</div>
         <div className="ie__address_bar__content">
           <img src={ie} alt="ie" className="ie__address_bar__content__img" />
           <div className="ie__address_bar__content__text">
-            {`https://www.google.com.tw${
-              state.route === 'search'
-                ? `/search?q=${encodeURIComponent(state.query)}`
-                : ''
-            }`}
+            {state.route === 'jahreilabs' 
+              ? 'https://www.jahreilabs.com/y2k/'
+              : state.route === 'yahoonews'
+              ? 'https://news.yahoo.com/'
+              : state.route === 'yahoomail'
+              ? 'https://mail.yahoo.com/'
+              : state.route === 'youtube'
+              ? 'https://www.youtube.com/watch?v=rvYZRskNV3w'
+              : `https://www.google.com.tw${
+                  state.route === 'search'
+                    ? `/search?q=${encodeURIComponent(state.query)}`
+                    : ''
+                }`
+            }
           </div>
           <img
             src={dropdown}
@@ -170,6 +253,7 @@ function InternetExplorer({ onClose }) {
             query={state.query}
             onSearch={onSearch}
             goMain={goMain}
+            goJahreiLabs={goJahreiLabs}
           />
         </div>
       </div>
@@ -464,6 +548,204 @@ const Div = styled.div`
         3px 1px rgba(255, 255, 255, 1), 6.5px 1px rgba(255, 255, 255, 1),
         10px 1px rgba(255, 255, 255, 1), 10px -2.5px rgba(255, 255, 255, 1),
         10px -6px rgba(255, 255, 255, 1);
+    }
+  }
+
+  /* Yahoo Toolbar */
+  .ie__toolbar__yahoo {
+    height: 28px;
+    background: linear-gradient(to bottom, #6D1B7B, #4A148C);
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    border-bottom: 1px solid #333;
+    font-size: 11px;
+    color: white;
+    
+    &__logo {
+      font-weight: bold;
+      font-size: 13px;
+      color: #FFEB3B;
+      margin-right: 12px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+      font-family: Arial, sans-serif;
+      letter-spacing: 0.5px;
+    }
+    
+    &__search {
+      display: flex;
+      align-items: center;
+      margin-right: 12px;
+      
+      input {
+        padding: 2px 4px;
+        border: 1px solid #ccc;
+        font-size: 11px;
+        width: 110px;
+        margin-right: 4px;
+      }
+      
+      button {
+        padding: 2px 8px;
+        background: #FF5722;
+        color: white;
+        border: 1px solid #D84315;
+        font-size: 11px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+    }
+    
+    &__buttons {
+      display: flex;
+      gap: 6px;
+      flex: 1;
+      
+      button {
+        padding: 2px 6px;
+        background: rgba(255,255,255,0.15);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.3);
+        font-size: 10px;
+        cursor: pointer;
+        
+        &:hover {
+          background: rgba(255,255,255,0.25);
+        }
+      }
+    }
+  }
+
+  /* Ask Jeeves Toolbar */
+  .ie__toolbar__ask {
+    height: 26px;
+    background: linear-gradient(to bottom, #1565C0, #0D47A1);
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    border-bottom: 1px solid #333;
+    font-size: 11px;
+    color: white;
+    
+    &__logo {
+      font-weight: bold;
+      font-size: 12px;
+      color: #FFF;
+      margin-right: 12px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+      font-family: Georgia, serif;
+    }
+    
+    &__search {
+      display: flex;
+      align-items: center;
+      margin-right: 12px;
+      
+      input {
+        padding: 2px 4px;
+        border: 1px solid #ccc;
+        font-size: 11px;
+        width: 130px;
+        margin-right: 4px;
+        font-style: italic;
+      }
+      
+      button {
+        padding: 2px 8px;
+        background: #FF9800;
+        color: white;
+        border: 1px solid #F57C00;
+        font-size: 11px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+    }
+    
+    &__buttons {
+      display: flex;
+      gap: 6px;
+      flex: 1;
+      
+      button {
+        padding: 2px 6px;
+        background: rgba(255,255,255,0.15);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.3);
+        font-size: 10px;
+        cursor: pointer;
+        
+        &:hover {
+          background: rgba(255,255,255,0.25);
+        }
+      }
+    }
+  }
+
+  /* McAfee Toolbar */
+  .ie__toolbar__mcafee {
+    height: 30px;
+    background: linear-gradient(to bottom, #D32F2F, #B71C1C);
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    border-bottom: 1px solid #333;
+    font-size: 11px;
+    color: white;
+    
+    &__logo {
+      font-weight: bold;
+      font-size: 11px;
+      color: #FFF;
+      margin-right: 12px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+      font-family: Arial, sans-serif;
+    }
+    
+    &__status {
+      display: flex;
+      align-items: center;
+      margin-right: 12px;
+      background: rgba(0,0,0,0.3);
+      padding: 2px 6px;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.2);
+      
+      span:not(.ie__toolbar__mcafee__light) {
+        margin-left: 4px;
+        font-size: 10px;
+        font-weight: bold;
+      }
+    }
+    
+    &__light {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      
+      &.green {
+        background: #4CAF50;
+        box-shadow: 0 0 4px #4CAF50;
+        border: 1px solid #2E7D32;
+      }
+    }
+    
+    &__buttons {
+      display: flex;
+      gap: 6px;
+      flex: 1;
+      
+      button {
+        padding: 2px 6px;
+        background: rgba(255,255,255,0.15);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.3);
+        font-size: 10px;
+        cursor: pointer;
+        
+        &:hover {
+          background: rgba(255,255,255,0.25);
+        }
+      }
     }
   }
 `;

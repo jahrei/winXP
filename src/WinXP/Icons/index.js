@@ -101,9 +101,10 @@ const StyledIcon = styled(Icon)`
   align-items: center;
   &__text__container {
     width: 100%;
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 500;
     color: white;
-    text-shadow: 0 1px 1px black;
+    text-shadow: 1px 1px 2px black;
     margin-top: 5px;
     display: flex;
     justify-content: center;
@@ -120,11 +121,12 @@ const StyledIcon = styled(Icon)`
     }
   }
   &__text {
-    padding: 0 3px 2px;
+    padding: 1px 4px 2px;
     background-color: ${({ isFocus, displayFocus }) =>
       isFocus && displayFocus ? '#0b61ff' : 'transparent'};
     text-align: center;
     flex-shrink: 1;
+    border-radius: 1px;
   }
   &__img__container {
     width: 30px;
